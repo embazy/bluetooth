@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<button id="btn">Connect</button>
+
+<script>
+    document
+        .getElementById('btn')
+        .addEventListener('click', async function () {
+            try {
+                const options = {
+                    filters: [
+                        {services: [0x1800, 0x180F, 0x181C]}
+                    ]
+                };
+                const device = await navigator.bluetooth.requestDevice(options);
+                console.log(device);
+            } catch (error) {
+                console.log("Something went wrong. " + error);
+            }
+        });
+</script>
+
+</body>
+</html>
